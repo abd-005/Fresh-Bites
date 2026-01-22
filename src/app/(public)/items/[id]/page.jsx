@@ -1,102 +1,122 @@
+import React from 'react';
+import { ChevronLeft, Clock, Globe, Tag, PlayCircle, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
-import { ArrowLeft, Play, Globe, Tag } from 'lucide-react';
 
-async function getFoodDetails(id) {
-  // Pattern match for your specific API structure
-  const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`, { cache: 'no-store' });
-  const data = await res.json();
-  return data.details || null; 
+const getSingleFood = async (id) => {
+    try {
+        const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`, { cache: 'no-store' });
+        const data = await res.json();
+        return data.details;
+    } catch (error) {
+        return null;
+    }
 }
 
-export default async function ItemDetailsPage({ params }) {
-  const { id } = await params;
-  const food = await getFoodDetails(id);
+const page = async ({ params }) => {
+    const { id } = await params;
+    const food = await getSingleFood(id);
 
-  if (!food) {
+    if (!food) {
+        return (
+            <div className="flex h-screen items-center justify-center bg-black">
+                <h2 className='text-4xl font-black text-yellow-500 tracking-tighter'>FOOD NOT FOUND</h2>
+            </div>
+        );
+    }
+
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl dark:text-white">Dish not found.</p>
-      </div>
-    );
-  }
-
-  // Extracting YouTube ID for the embed player
-  const videoId = food.video?.split('v=')[1];
-
-  return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 font-poppins">
-      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-        
-        {/* Back Button */}
-        <Link href="/items" className="inline-flex items-center gap-2 text-orange-500 mb-8 font-medium hover:opacity-80 transition-opacity">
-          <ArrowLeft size={20} /> Back to Menu
-        </Link>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Left: Food Image */}
-          <div className="relative group">
-            <div className="overflow-hidden rounded-[2rem] shadow-2xl">
-              <img 
-                src={food.foodImg} 
-                alt={food.title} 
-                className="w-full aspect-square object-cover transform group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            {/* Price Tag Overlay */}
-            <div className="absolute top-6 right-6 bg-white dark:bg-slate-900 px-6 py-3 rounded-2xl shadow-xl border dark:border-slate-800">
-              <span className="text-2xl font-bold text-green-600">${food.price}</span>
-            </div>
-          </div>
-
-          {/* Right: Food Info */}
-          <div className="flex flex-col justify-center">
-            <div className="flex flex-wrap gap-3 mb-6">
-              <span className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-wider">
-                <Tag size={14} /> {food.category}
-              </span>
-              <span className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider">
-                <Globe size={14} /> {food.area}
-              </span>
+        <div className="min-h-screen bg-[#0a0a0a] pb-20 text-white">
+            {/* Hero Image Section */}
+            <div className="relative h-[50vh] w-full overflow-hidden">
+                <img 
+                    src={food.foodImg} 
+                    alt={food.title} 
+                    className="h-full w-full object-cover scale-105 blur-[2px]" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-transparent" />
+                
+                {/* Back Button */}
+                <Link href="/foods" className="absolute left-6 top-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-black/40 backdrop-blur-md hover:bg-yellow-500 hover:text-black transition-all">
+                    <ChevronLeft size={24} />
+                </Link>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 dark:text-white leading-tight">
-              {food.title}
-            </h1>
-            
-            <p className="text-gray-600 dark:text-gray-400 text-lg font-lora leading-relaxed mb-10">
-              Experience the authentic taste of our {food.title}. Prepared following 
-              traditional {food.area} techniques, this {food.category} dish is a highlight 
-              of the Fresh Bites seasonal menu.
-            </p>
+            {/* Content Container */}
+            <div className="relative -mt-32 px-6 lg:px-24">
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+                    
+                    {/* Left Column: Main Info */}
+                    <div className="lg:col-span-7 space-y-6">
+                        <div className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-4 py-1 text-xs font-black uppercase text-black">
+                            <Tag size={14} /> {food.category}
+                        </div>
+                        
+                        <h1 className="text-5xl lg:text-7xl font-black tracking-tighter text-white">
+                            {food.title}
+                        </h1>
 
-            <button className="w-full md:w-max bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-500/20 transition-all active:scale-95">
-              Order Now
-            </button>
-          </div>
+                        <div className="flex flex-wrap gap-6 py-4">
+                            <div className="flex items-center gap-2 text-white/60">
+                                <Globe size={20} className="text-yellow-500" />
+                                <span className="font-medium">{food.area} Cuisine</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-white/60">
+                                <Clock size={20} className="text-yellow-500" />
+                                <span className="font-medium">25-30 Mins</span>
+                            </div>
+                        </div>
+
+                        <p className="text-lg leading-relaxed text-white/70 max-w-2xl italic">
+                            Experience the juicy and tender perfection of our signature {food.title}. 
+                            Crafted with premium ingredients to ensure every bite is delicious.
+                        </p>
+
+                        {/* Video Section */}
+                        {food.video && (
+                            <div className="mt-10 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-2 backdrop-blur-sm">
+                                <div className="group relative aspect-video w-full overflow-hidden rounded-[2rem]">
+                                     <iframe 
+                                        className="h-full w-full"
+                                        src={`https://www.youtube.com/embed/${food.video.split('v=')[1]}`}
+                                        title="YouTube video player"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Right Column: Order Card */}
+                    <div className="lg:col-span-5">
+                        <div className="sticky top-10 rounded-[3rem] border border-white/20 bg-white/5 p-8 backdrop-blur-2xl shadow-2xl">
+                            <div className="flex items-center justify-between">
+                                <span className="text-sm font-bold uppercase tracking-widest text-white/40">Total Price</span>
+                                <span className="rounded-full bg-green-500/20 px-3 py-1 text-xs font-bold text-green-400">In Stock</span>
+                            </div>
+                            <div className="mt-2 text-6xl font-black text-yellow-500">
+                                ${(food.price / 100).toFixed(2)}
+                            </div>
+
+                            <div className="mt-8 space-y-4">
+                                <button className="flex w-full items-center justify-center gap-3 rounded-[2rem] bg-yellow-500 py-5 text-xl font-black text-black shadow-[0_10px_30px_rgba(234,179,8,0.3)] transition-transform hover:scale-[1.02] active:scale-95">
+                                    <ShoppingCart fill="currentColor" />
+                                    ADD TO CART
+                                </button>
+                                <button className="w-full rounded-[2rem] border border-white/10 bg-white/5 py-5 text-lg font-bold text-white transition-all hover:bg-white/10">
+                                    Customize Ingredients
+                                </button>
+                            </div>
+
+                            <p className="mt-6 text-center text-xs text-white/30">
+                                ⚡️ Free delivery on orders over $50.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    );
+};
 
-        {/* Video Recipe Section */}
-        {videoId && (
-          <div className="border-t dark:border-slate-800 pt-16">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-xl">
-                <Play size={24} fill="currentColor" />
-              </div>
-              <h2 className="text-2xl font-bold dark:text-white">Watch How It's Made</h2>
-            </div>
-            
-            <div className="relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl border dark:border-slate-800">
-              <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${videoId}`}
-                title={food.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
+export default page;
