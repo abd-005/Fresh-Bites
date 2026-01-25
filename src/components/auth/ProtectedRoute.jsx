@@ -1,18 +1,20 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useCookies } from 'react-cookie';
+import { useRouter } from 'next/navigation';
 
 const ProtectedRoute = ({ children }) => {
   const router = useRouter();
-  const [cookies] = useCookies(['auth_token']);
-  const token = cookies.auth_token;
 
   useEffect(() => {
+    // Check if user has auth token
+    const authToken = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('auth_token='));
+
     // Redirect if no token is found
-    if (!token && router.pathname.startsWith('/add-item')) {
+    if (!authToken) {
       router.push('/login');
     }
-  }, [token, router]);
+  }, [router]);
 
   return children; // Render children if authenticated
 };

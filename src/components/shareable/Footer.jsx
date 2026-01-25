@@ -5,11 +5,11 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a0a0a] border-t border-white/10 pt-16 pb-8 text-white">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-        
+
         {/* Brand Section */}
         <div className="space-y-6">
           <Link href="/" className="inline-block transition-transform hover:scale-105">
-            <img src="/logo.png" alt="Taxi-Burger Logo" className="w-[60px] drop-shadow-[0_0_10px_rgba(234,179,8,0.3)]" />
+            <img src="/logo.png" alt="Taxi-Burger Logo" className="w-15 drop-shadow-[0_0_10px_rgba(234,179,8,0.3)]" />
           </Link>
           <p className="text-white/50 text-sm leading-relaxed max-w-xs">
             The ultimate gourmet kitchen experience. We deliver tender, juicy, and delicious burgers at taxi speed.
