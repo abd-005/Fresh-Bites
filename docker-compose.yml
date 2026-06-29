@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  fresh-bites:
+    container_name: fresh-bites-app
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - "3002:3000"
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    networks:
+      - fresh-network
+
+    restart: unless-stopped
+
+networks:
+  fresh-network:
+    driver: bridge
