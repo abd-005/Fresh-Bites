@@ -14,7 +14,7 @@ All requirements have been met and exceeded. The application is fully functional
 
 - [x] Hero Section - Eye-catching main CTA
 - [x] Stats Section - Key metrics display
-- [x] Chef's Specials - Featured items showcase
+- [x] CHEF&apos;S SPECIALS - Featured items showcase
 - [x] App Promo Section - Mobile download CTA
 - [x] Philosophy Section - Quality emphasis
 - [x] Newsletter Section - Email subscription

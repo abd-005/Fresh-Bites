@@ -15,7 +15,7 @@
 1. ✅ **Landing Page** - 7 sections + navbar + footer
    - Hero Section
    - Stats Section
-   - Chef's Specials
+   - CHEF&apos;S SPECIALS
    - App Promo
    - Philosophy
    - Newsletter

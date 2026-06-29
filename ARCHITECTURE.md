@@ -11,7 +11,7 @@
                     │   Landing Page (/)   │
                     │   • Hero Section     │
                     │   • Stats Section    │
-                    │   • Chef's Specials  │
+                    │   • CHEF&apos;S SPECIALS  │
                     │   • App Promo        │
                     │   • Philosophy       │
                     │   • Newsletter       │

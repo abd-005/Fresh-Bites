@@ -122,7 +122,7 @@ fresh-bites/
 - ✅ 7 complete sections:
   1.  Hero section with CTAs
   2.  Stats section (Daily Orders, Chefs, Clients, Cities)
-  3.  Chef's Specials (Featured Items)
+  3.  CHEF&apos;S SPECIALS (Featured Items)
   4.  App Promo Section
   5.  Philosophy/Quality Section
   6.  Newsletter Subscription

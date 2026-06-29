@@ -7,7 +7,7 @@
 - [x] **7+ Relevant Sections** (excluding Navbar & Footer)
   1. ✅ Hero Section - Main CTA with tagline
   2. ✅ Stats Section - Daily orders, expert chefs, happy clients, cities
-  3. ✅ Chef's Specials - Featured items showcase
+  3. ✅ CHEF&apos;S SPECIALS - Featured items showcase
   4. ✅ App Promo Section - Mobile app promotion
   5. ✅ Our Philosophy Section - Quality ingredients showcase
   6. ✅ Newsletter Subscription - Email signup CTA

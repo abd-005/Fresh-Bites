@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+
 import { ChevronRight, Star, Clock, MapPin, Sparkles, UtensilsCrossed, Flame, ShoppingCart, Eye, Zap, Smartphone } from 'lucide-react';
 
 export default function LandingPage() {
@@ -51,11 +53,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* 3. CHEF'S SPECIALS - Glass Cards */}
+      {/* 3. CHEF&apos;S SPECIALS - Glass Cards */}
       <section className="container mx-auto px-6 py-24">
         <div className="mb-16 flex items-end justify-between">
           <div>
-            <h2 className="text-4xl font-black tracking-tighter">CHEF'S SPECIALS</h2>
+            <h2 className="text-4xl font-black tracking-tighter">CHEF&apos;S SPECIALS</h2>
             <div className="h-1.5 w-20 rounded-full bg-yellow-500 mt-2" />
           </div>
           <Link href="/items" className="text-sm font-bold text-yellow-500 hover:underline">View All Items</Link>
@@ -66,8 +68,10 @@ export default function LandingPage() {
             <div key={i} className="group relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-white/5 p-4 backdrop-blur-xl transition-all duration-500 hover:bg-white/10">
               <div className="relative h-64 overflow-hidden rounded-[2rem]">
                 <div className="absolute inset-0 bg-stone-800 animate-pulse group-hover:hidden" />
-                <img 
+                <Image 
                    src={`https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500&auto=format&fit=crop`} 
+                   width={120}
+                   height={120}
                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                    alt="Burger"
                 />
@@ -98,7 +102,7 @@ export default function LandingPage() {
               TAXI-BURGER <br /> IN YOUR POCKET.
             </h2>
             <p className="text-lg font-bold opacity-80">
-              Download our app for exclusive "Flash Deals" and real-time taxi tracking for your food.
+              Download our app for exclusive &quot;Flash Deals&quot; and real-time taxi tracking for your food.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:justify-start">
               <button className="flex items-center gap-3 rounded-2xl bg-black px-8 py-4 text-white hover:scale-105 transition-all">
@@ -118,7 +122,10 @@ export default function LandingPage() {
           <div className="flex-1 flex justify-center">
              <div className="relative h-80 w-64 rounded-[3rem] border-8 border-black bg-stone-900 shadow-2xl overflow-hidden">
                 <div className="absolute top-0 h-6 w-32 left-1/2 -translate-x-1/2 bg-black rounded-b-2xl" />
-                <img src="https://www.themealdb.com/images/media/meals/qxutws1486978099.jpg" className="h-full w-full object-cover opacity-50" alt="app" />
+              <Image src="https://www.themealdb.com/images/media/meals/qxutws1486978099.jpg" className="h-full w-full object-cover opacity-50"
+              width={120}
+              height={120}
+              alt="app" />
              </div>
           </div>
         </div>
@@ -143,9 +150,11 @@ export default function LandingPage() {
         <div className="container mx-auto flex flex-col items-center gap-16 px-6 md:flex-row">
           <div className="relative flex-1">
              <div className="h-[450px] w-full rounded-[3rem] border border-white/20 bg-stone-800 object-cover shadow-2xl overflow-hidden">
-                <img 
+              <Image 
                   src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop" 
                   className="h-full w-full object-cover opacity-80"
+                  width={120}
+                  height={120}
                   alt="Quality Ingredients"
                 />
              </div>
@@ -158,7 +167,7 @@ export default function LandingPage() {
           </div>
           <div className="flex-1 space-y-6">
             <h2 className="text-5xl font-black tracking-tighter leading-none">
-              WE DON'T DO FAST FOOD. <br />
+              WE DON&apos;T DO FAST FOOD. <br />
               <span className="text-yellow-500">WE DO GOOD FOOD FAST.</span>
             </h2>
             <p className="text-lg text-white/60">
@@ -202,7 +211,7 @@ export default function LandingPage() {
               <MapPin size={32} />
             </div>
             <h3 className="mb-2 text-xl font-bold">Live Tracking</h3>
-            <p className="text-sm text-white/50">Watch your burger's journey in real-time.</p>
+            <p className="text-sm text-white/50">Watch your burger&apos;s journey in real-time.</p>
           </div>
         </div>
       </section>

@@ -274,7 +274,7 @@
 
 - 1. Hero section
 - 2. Stats section
-- 3. Chef's specials
+- 3. CHEF&apos;S SPECIALS
 - 4. App promo section
 - 5. Philosophy section
 - 6. Newsletter section

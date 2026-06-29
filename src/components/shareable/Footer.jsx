@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, Youtube } from 'lucide-react';
 import Link from 'next/link';
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
         {/* Brand Section */}
         <div className="space-y-6">
           <Link href="/" className="inline-block transition-transform hover:scale-105">
-            <img src="/logo.png" alt="Taxi-Burger Logo" className="w-15 drop-shadow-[0_0_10px_rgba(234,179,8,0.3)]" />
+            <Image src="/logo.png" alt="Taxi-Burger Logo" width={120} height={120} className="w-15 drop-shadow-[0_0_10px_rgba(234,179,8,0.3)]" />
           </Link>
           <p className="text-white/50 text-sm leading-relaxed max-w-xs">
             The ultimate gourmet kitchen experience. We deliver tender, juicy, and delicious burgers at taxi speed.

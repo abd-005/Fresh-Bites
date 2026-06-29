@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronLeft, Clock, Globe, Tag, PlayCircle, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
+import Image from "next/image";
 
 const getSingleFood = async (id) => {
     try {
@@ -28,9 +29,11 @@ const page = async ({ params }) => {
         <div className="min-h-screen bg-[#0a0a0a] pb-20 text-white">
             {/* Hero Image Section */}
             <div className="relative h-[50vh] w-full overflow-hidden">
-                <img 
+                <Image 
                     src={food.foodImg} 
                     alt={food.title} 
+                    width={120}
+                    height={120}
                     className="h-full w-full object-cover scale-105 blur-[2px]" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-transparent" />

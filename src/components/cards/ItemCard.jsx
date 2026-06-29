@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShoppingCart, Eye, Star, Flame } from 'lucide-react';
 import Link from 'next/link';
+import Image from "next/image";
 
 const ItemCard = ({ food }) => {
   return (
@@ -14,9 +15,11 @@ const ItemCard = ({ food }) => {
 
       {/* Image Container */}
       <div className="relative h-56 w-full overflow-hidden rounded-[2rem]">
-        <img
+        <Image
           src={food.foodImg}
           alt={food.title}
+          width={120}
+          height={120}
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

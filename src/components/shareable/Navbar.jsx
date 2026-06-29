@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ThemeToggle from '../themes/ThemeToggle';
 import { Menu, X, ShoppingCart, User, ChevronRight, LogOut } from 'lucide-react';
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,9 +44,11 @@ export default function Navbar() {
           {/* Logo Section */}
           <div className="flex shrink-0 items-center">
             <Link href="/" className="transition-transform active:scale-95">
-              <img
+              <Image
                 src="/logo.png"
                 alt="Taxi-Burger Logo"
+                width={120}
+                height={120}
                 className="w-13.75 drop-shadow-[0_0_15px_rgba(234,179,8,0.4)]"
               />
             </Link>
